@@ -1,0 +1,63 @@
+name: Build and Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: "production-deploy"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site (hybrid mode)
+        run: npm run build
+        env:
+          ASTRO_BASE: '/'
+          ASTRO_SITE: 'https://quality-media.ru'
+
+      - name: Deploy to VPS via SSH/rsync
+        env:
+          SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          HOST: ${{ secrets.VPS_HOST || '13.143.137.84' }}
+          USER: 'root'
+        run: |
+          if [ -z "$SSH_KEY" ]; then
+            echo "::error::Секрет VPS_SSH_KEY не задан или пуст в GitHub Secrets!"
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+          SSH_CMD="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+
+          # Sync built dist and package files to VPS
+          rsync -avz --delete -e "$SSH_CMD" dist/ "${USER}@${HOST}:/var/www/quality-media/dist/"
+          rsync -avz -e "$SSH_CMD" package.json package-lock.json "${USER}@${HOST}:/var/www/quality-media/"
+
+          # Set permissions, install production dependencies, restart service and reload nginx
+          $SSH_CMD "${USER}@${HOST}" "
+            chown -R www-data:www-data /var/www/quality-media/dist
+            cd /var/www/quality-media && npm ci --omit=dev
+            systemctl restart quality-media
+            systemctl reload nginx
+          "
