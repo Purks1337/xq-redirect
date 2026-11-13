@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import { getAssetUrl } from '../utils/paths';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "QUALITY MEDIA — Видеопродакшн и Студия подкастов",
+  description = "Официальный переходник quality-media.ru медиагруппы ХВАЛИТЕ. Выберите видеопродакшн полного цикла или профессиональную студию подкастов в Екатеринбурге."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2a2a2a" />
+
+    <link rel="icon" type="image/svg+xml" href={getAssetUrl('/assets/logo/star-monogram.svg')} />
+
+    <!-- Google Fonts: Unbounded, Golos Text, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content="https://quality-media.ru" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

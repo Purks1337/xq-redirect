@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="44" fill="#0E0F12"/>
+  <defs>
+    <linearGradient id="qmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3358F4"/>
+      <stop offset="100%" stop-color="#D4A54C"/>
+    </linearGradient>
+  </defs>
+  <polygon points="40,40 100,76 160,40 124,100 160,160 100,124 40,160 76,100" fill="url(#qmGrad)" stroke="url(#qmGrad)" stroke-width="6" stroke-linejoin="round"/>
+</svg>

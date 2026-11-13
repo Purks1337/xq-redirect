@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAssetUrl } from '../utils/paths';
+
+const mediaServices = [
+  'Рекламные ролики',
+  'Имиджевое видео',
+  'AI-продакшн',
+  '3D-графика',
+  'Онлайн-трансляции'
+];
+
+const podcastServices = [
+  'Видеоподкасты под ключ',
+  'Экспертные Reels / Shorts',
+  '2 локации студии',
+  '3 камеры 4K + звук',
+  'Монтаж за 2 дня'
+];
+---
+
+<Layout title="QUALITY MEDIA — Видеопродакшн и Студия подкастов">
+  <div class="page-container">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-brand">
+        <div class="brand-icon-wrap" aria-hidden="true">
+          <img src={getAssetUrl('/assets/logo/star-monogram.svg')} alt="" width="26" height="26" />
+        </div>
+        <div class="header-titles">
+          <span class="header-logo-text">QUALITY MEDIA</span>
+          <span class="header-tagline">Единый хаб медиагруппы // Выберите направление</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Stack with 2 Horizontal Cards -->
+    <main class="cards-stack">
+      <!-- Card 1: ХВАЛИТЕ MEDIA (Video Production) -->
+      <section class="horizontal-card card-media-style" aria-label="Видеопродакшн Хвалите Media">
+        <div class="card-photo-pane">
+          <div class="media-window-bar">
+            <span>▶ HVALITE_MEDIA.EXE</span>
+            <div class="window-dots" aria-hidden="true">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+          </div>
+          <img 
+            src={getAssetUrl('/assets/img/media-showreel.jpg')} 
+            alt="Кадр со съемок видеопродакшна Хвалите Media" 
+            loading="eager"
+            width="620"
+            height="380"
+          />
+          <div class="photo-overlay-tag">
+            <span>Продакшн полного цикла</span>
+          </div>
+        </div>
+
+        <div class="card-content-pane">
+          <div class="pane-header">
+            <div class="direction-row">
+              <span class="dir-badge-media">ВИДЕОПРОДАКШН</span>
+              <span style="font-size: 12px; color: #7F8498">Онлайн-студия</span>
+            </div>
+            <div class="card-title-hvalite">
+              <span>ХВАЛИТЕ</span>
+              <span class="badge-media-blue">MEDIA</span>
+            </div>
+            <p class="card-services-text">
+              Съемка рекламных и имиджевых роликов, презентационных фильмов, AI-видео и 3D-графика. Снимаем так, что хвалят.
+            </p>
+            <div class="service-pill-row">
+              {mediaServices.map((service) => (
+                <span class="service-pill-media">{service}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="card-actions-row">
+            <a 
+              href="https://hvalite-media.ru" 
+              class="btn-brutal btn-media" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <span>Перейти на сайт media →</span>
+            </a>
+
+            <div class="card-quick-contacts">
+              <a href="tel:+79022775570" class="quick-contact-link" title="Позвонить">
+                <span>+7 902 277-55-70</span>
+              </a>
+              <a href="https://t.me/hvalitemedia" target="_blank" rel="noopener noreferrer" class="quick-contact-tag">TG</a>
+              <a href="https://wa.me/message/FTUPFBI5PTVXM1" target="_blank" rel="noopener noreferrer" class="quick-contact-tag">WA</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 2: ХВАЛИТЕ QUALITY (Podcasts Studio) -->
+      <section class="horizontal-card card-podcast-style" aria-label="Студия подкастов Хвалите Quality">
+        <div class="card-photo-pane">
+          <div class="podcast-rec-bar">
+            <span>🎙 HVALITE_QUALITY</span>
+            <div class="rec-indicator">
+              <span class="rec-dot" aria-hidden="true"></span>
+              <span>REC</span>
+            </div>
+          </div>
+          <img 
+            src={getAssetUrl('/assets/img/podcast-studio.jpg')} 
+            alt="Студия подкастов Хвалите Quality в Екатеринбурге" 
+            loading="eager"
+            width="620"
+            height="380"
+          />
+          <div class="photo-overlay-gold">
+            <span>Подкасты под ключ</span>
+          </div>
+        </div>
+
+        <div class="card-content-pane">
+          <div class="pane-header">
+            <div class="direction-row">
+              <span class="dir-badge-gold">СТУДИЯ ПОДКАСТОВ</span>
+              <span style="font-size: 12px; color: #6D695F">ул. Ботаническая, 19</span>
+            </div>
+            <div class="card-title-dark">
+              <span>ХВАЛИТЕ</span>
+              <span class="badge-quality-gold">QUALITY</span>
+            </div>
+            <p class="card-services-text-dark">
+              Уютная студия с лаундж-зоной и ретро-ТВ. Запись видеоподкастов, интервью и рилс со звукорежиссёром под ключ.
+            </p>
+            <div class="service-pill-row">
+              {podcastServices.map((service) => (
+                <span class="service-pill-gold">{service}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="card-actions-row actions-row-podcast">
+            <a 
+              href="https://hvalite-quality.ru" 
+              class="btn-brutal btn-gold" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <span>🎙 Перейти на сайт подкастов →</span>
+            </a>
+
+            <div class="card-quick-contacts">
+              <a href="tel:+79923410520" class="quick-contact-link-dark" title="Позвонить">
+                <span>+7 992 341-05-20</span>
+              </a>
+              <a href="https://t.me/hvaliteq" target="_blank" rel="noopener noreferrer" class="quick-contact-tag-gold">TG</a>
+              <a href="https://wa.me/79923410520" target="_blank" rel="noopener noreferrer" class="quick-contact-tag-gold">WA</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Contacts & Meta Hub -->
+    <footer class="bottom-contacts-hub">
+      <div class="hub-top-row">
+        <div class="hub-phones">
+          <a href="tel:+79022775570" class="phone-item" title="Позвонить в видеопродакшн">
+            <span class="phone-label label-blue">Видео</span>
+            <span>+7 902 277-55-70</span>
+          </a>
+          <span style="color: #434758" aria-hidden="true">|</span>
+          <a href="tel:+79923410520" class="phone-item" title="Позвонить в студию подкастов">
+            <span class="phone-label label-gold">Подкасты</span>
+            <span>+7 992 341-05-20</span>
+          </a>
+        </div>
+
+        <div class="hub-details">
+          <a href="mailto:hvalitemedia@gmail.com" class="hub-link" title="Написать на email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>hvalitemedia@gmail.com</span>
+          </a>
+          <span class="hub-link" title="Адрес студии">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Екатеринбург, ул. Ботаническая, 19</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="hub-bottom-row">
+        <div class="hub-socials">
+          <span style="font-family: var(--font-mono); font-size: 11px; color: #6D7282">СОЦСЕТИ:</span>
+          <a href="https://t.me/hvalitemedia" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">TG Видео</a>
+          <a href="https://t.me/hvaliteq" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">TG Подкасты</a>
+          <a href="https://vk.ru/hvalitemedia" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">VK Видео</a>
+          <a href="https://vk.com/hvaliteq" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">VK Подкасты</a>
+          <a href="https://max.ru/u/f9LHodD0cOJT-TeHrCNk13ow_3qSyo8AgTNJvPhJUqCh7BtiIubqkJt8zaw" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">MAX</a>
+          <a href="https://www.instagram.com/hvalite_media" target="_blank" rel="noopener noreferrer" class="social-brutal-btn">Instagram</a>
+        </div>
+
+        <div class="hub-legal">
+          <span>© 2026 quality-media.ru · ИП Аккерман М.Э. (ИНН 661711760816)</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
